@@ -3,10 +3,12 @@
 //  SwitchIM
 //
 //  Created by NuRi on 2/9/15.
-//  Copyright (c) 2015 Suhwan Seo. All rights reserved.
+//  Copyright (c) 2016 Suhwan Seo. All rights reserved.
 //
 
 import Cocoa
+import MASShortcut
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -32,9 +34,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         LOG("applicationDidFinishLaunching start")
         // add observer
-        NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: "textInputSourceDidChange:", name: kTISNotifySelectedKeyboardInputSourceChanged, object: "SwitchIM")
+        NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.textInputSourceDidChange(_:)), name: kTISNotifySelectedKeyboardInputSourceChanged as String?, object: "SwitchIM")
 
-        NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: "textInputSourceDidEnable:", name: kTISNotifyEnabledKeyboardInputSourcesChanged, object: "SwitchIM")
+        NSDistributedNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.textInputSourceDidEnable(_:)), name: kTISNotifyEnabledKeyboardInputSourcesChanged as String?, object: "SwitchIM")
 
         //statusBar items
         setupStatusItem()
@@ -85,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // icon type
         let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let iconType: Int = defaults.objectForKey(IconTypeAppDefaultKey) as Int
+        let iconType: Int = defaults.objectForKey(IconTypeAppDefaultKey as String) as! Int
         
         LOG("Icon type: \(iconType)")
 
@@ -124,19 +126,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let shortcutColumnIndex = tableView.columnWithIdentifier("Shortcut")
         
         for dataDic: NSMutableDictionary in tableViewController.dataArray {
-          let array = dataDic["InputSource"] as NSMutableDictionary
+          let array = dataDic["InputSource"] as! NSMutableDictionary
             //LOG((inputSourceArray["InputSourceModel"] as InputSourceModel).description())
-            let icon = array["Icon"] as NSImage
-            let model: InputSourceModel = array["InputSourceModel"] as InputSourceModel
+            let icon = array["Icon"] as! NSImage
+            let model: InputSourceModel = array["InputSourceModel"] as! InputSourceModel
             let name = model._name as String
-            let id = model._ID as String
-            let inputSource:TISInputSourceRef = model._source as TISInputSourceRef
-            let shortcut: NSString = dataDic["Shortcut"] as NSString
+            //let id = model._ID as String
+            //let inputSource:TISInputSourceRef = model._source as TISInputSourceRef
+            let shortcut: NSString = dataDic["Shortcut"] as! NSString
             LOG("-- \(name)")
-            var checked:Bool = (currentShortcut == shortcut)
+            let checked:Bool = (currentShortcut == shortcut)
 
             // add new menu
-            let menuItem: NSMenuItem = NSMenuItem(title: name, action: "inputSourceMenuAction:", keyEquivalent: "")
+            let menuItem: NSMenuItem = NSMenuItem(title: name, action: #selector(AppDelegate.inputSourceMenuAction(_:)), keyEquivalent: "")
             menuItem.tag = inputSourceTag
             menuItem.image = icon
             if checked {
@@ -149,9 +151,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             //            cellView = tableView.makeViewWithIdentifier("Shortcut", owner: self) as NSTableCellView
             //let shortcutView: MASShortcutView = cellView.nextKeyView as MASShortcutView
 
-            let shortcutColumn:NSView? = tableView.viewAtColumn(shortcutColumnIndex, row: menuIndex, makeIfNecessary: false) as? NSView
+            let shortcutColumn:NSView? = tableView.viewAtColumn(shortcutColumnIndex, row: menuIndex, makeIfNecessary: false) as NSView?
             if (shortcutColumn != nil) {
-                let shortcutView:MASShortcutView = shortcutColumn!.nextKeyView as MASShortcutView
+                let shortcutView:MASShortcutView = shortcutColumn!.nextKeyView as! MASShortcutView
                 let masShortcut:MASShortcut? = shortcutView.shortcutValue
                 
                 if (masShortcut != nil) {
@@ -174,12 +176,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func inputSourceMenuAction(sender: NSMenuItem) {
         LOG("selected: input source menu \(sender.title) index: \(sender.representedObject)")
         if (sender.representedObject != nil) {
-            let index:Int = sender.representedObject as Int
+            let index:Int = sender.representedObject as! Int
             let dataDic: NSMutableDictionary = tableViewController.dataArray[index]
-            let array: NSMutableDictionary = dataDic["InputSource"] as NSMutableDictionary
-            let model: InputSourceModel = array["InputSourceModel"] as InputSourceModel
+            let array: NSMutableDictionary = dataDic["InputSource"] as! NSMutableDictionary
+            let model: InputSourceModel = array["InputSourceModel"] as! InputSourceModel
             let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            let flag = defaults.valueForKey(ClickTweakDefaultKey) as Bool
+            let flag = defaults.valueForKey(ClickTweakDefaultKey as String) as! Bool
 
             SwitchIM().changeInputSource(model, mouseClick: flag)
         }

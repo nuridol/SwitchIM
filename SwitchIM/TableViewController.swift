@@ -3,12 +3,13 @@
 //  SwitchIM
 //
 //  Created by NuRi on 2/9/15.
-//  Copyright (c) 2015 Suhwan Seo. All rights reserved.
+//  Copyright (c) 2016 Suhwan Seo. All rights reserved.
 //
 
 import Foundation
 import Cocoa
 import AppKit
+import MASShortcut
 
 class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate {
     
@@ -27,7 +28,7 @@ class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
 
         // Register default values
         let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        defaults.registerDefaults([appDelegate.IconTypeAppDefaultKey: appDelegate.IconTypeApp, appDelegate.ClickTweakDefaultKey: true, appDelegate.OpenLoginDefaultKey: true])
+        defaults.registerDefaults([appDelegate.IconTypeAppDefaultKey as String: appDelegate.IconTypeApp, appDelegate.ClickTweakDefaultKey as String: false, appDelegate.OpenLoginDefaultKey as String: true])
 
         // Reload the table
         //self.tableView.reloadData()
@@ -73,14 +74,14 @@ class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
     
     func setUpIconTypeRadio() {
         let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let tag = defaults.valueForKey(appDelegate.IconTypeAppDefaultKey) as Int
+        let tag = defaults.valueForKey(appDelegate.IconTypeAppDefaultKey as String) as! Int
         iconTypeMatrix.selectCellWithTag(tag)
         LOG("loaded defaults key:\(appDelegate.IconTypeAppDefaultKey) value:\(tag)")
     }
 
     func setUpCheckbox() {
         let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let flag = defaults.valueForKey(appDelegate.ClickTweakDefaultKey) as Bool
+        let flag = defaults.valueForKey(appDelegate.ClickTweakDefaultKey as String) as! Bool
         if (!flag) {
             mouseClickButton.state = NSOffState
         }
@@ -93,29 +94,29 @@ class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
 
     
     // table
-    func numberOfRowsInTableView(aTableView: NSTableView!) -> Int
+    func numberOfRowsInTableView(tableView: NSTableView) -> Int
     {
         let numberOfRows:Int = dataArray.count
         LOG("table size:\(numberOfRows)")
         return numberOfRows
     }
     
-    func tableView(tableView: NSTableView!, viewForTableColumn tableColumn: NSTableColumn!, row: Int) -> AnyObject!
+    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
-        LOG("column identifier:\(tableColumn.identifier)")
+        LOG("column identifier:\(tableColumn!.identifier)")
         let object = dataArray[row] as NSMutableDictionary
-        let array = object["InputSource"] as NSMutableDictionary
-        let icon = array["Icon"] as NSImage
-        let model: InputSourceModel = array["InputSourceModel"] as InputSourceModel
+        let array = object["InputSource"] as! NSMutableDictionary
+        let icon = array["Icon"] as! NSImage
+        let model: InputSourceModel = array["InputSourceModel"] as! InputSourceModel
         let name = model._name as String
         let id = model._ID as String
-        let inputSource = model._source as TISInputSourceRef
-        let shortcut: NSString = object["Shortcut"] as NSString
+        let shortcut: NSString = object["Shortcut"] as! NSString
+        //let inputSource = model._source as TISInputSourceRef
         
         var cellView: NSTableCellView!
-        if ((tableColumn.identifier) == "InputSource")
+        if ((tableColumn!.identifier) == "InputSource")
         {
-            cellView = tableView.makeViewWithIdentifier("InputSource", owner: self) as NSTableCellView
+            cellView = tableView.makeViewWithIdentifier("InputSource", owner: self) as! NSTableCellView
             
             let textField = cellView.textField
             textField?.stringValue = name
@@ -123,10 +124,10 @@ class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
             imageView?.image = icon
         }
         else {
-            cellView = tableView.makeViewWithIdentifier("Shortcut", owner: self) as NSTableCellView
-            let shortcutView: MASShortcutView = cellView.nextKeyView as MASShortcutView
-            shortcutView.associatedUserDefaultsKey = shortcut
-            MASShortcutBinder.sharedBinder().bindShortcutWithDefaultsKey(shortcut, toAction: { self.shortcutAction(id, model: model) })
+            cellView = tableView.makeViewWithIdentifier("Shortcut", owner: self) as! NSTableCellView
+            let shortcutView: MASShortcutView = cellView.nextKeyView as! MASShortcutView
+            shortcutView.associatedUserDefaultsKey = shortcut as String
+            MASShortcutBinder.sharedBinder().bindShortcutWithDefaultsKey(shortcut as String, toAction: { self.shortcutAction(id, model: model) })
             shortcutView.shortcutValueChange = {shortcutView in self.appDelegate.setupStatusItem() }
         }
         return cellView
@@ -137,7 +138,7 @@ class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
     {
         LOG("shortcut pressed: \(id)")
         let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let flag = defaults.valueForKey(appDelegate.ClickTweakDefaultKey) as Bool
+        let flag = defaults.valueForKey(appDelegate.ClickTweakDefaultKey as String) as! Bool
         SwitchIM().changeInputSource(model, mouseClick: flag)
 
         // reset status bar
@@ -145,10 +146,10 @@ class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
     }
     
     @IBAction func selectIconAction(sender: AnyObject) {
-        let matrix:NSMatrix = sender as NSMatrix
+        let matrix:NSMatrix = sender as! NSMatrix
         let tag = matrix.selectedTag()
         let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        defaults.setValue(tag, forKey: appDelegate.IconTypeAppDefaultKey)
+        defaults.setValue(tag, forKey: appDelegate.IconTypeAppDefaultKey as String)
         LOG("saved defaults key:\(appDelegate.IconTypeAppDefaultKey) value:\(tag)")
         
         // reset status bar
@@ -156,14 +157,14 @@ class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
     }
 
     @IBAction func mouseClickAction(sender: AnyObject) {
-        let button:NSButton = sender as NSButton
+        let button:NSButton = sender as! NSButton
         var flag:Bool = true
         if (button.state == NSOffState) {
             flag = false
         }
 
         let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        defaults.setValue(flag, forKey: appDelegate.ClickTweakDefaultKey)
+        defaults.setValue(flag, forKey: appDelegate.ClickTweakDefaultKey as String)
         LOG("saved defaults key:\(appDelegate.ClickTweakDefaultKey) value:\(flag)")
     }
 }

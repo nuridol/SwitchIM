@@ -10,6 +10,7 @@ import Foundation
 import Cocoa
 import AppKit
 import MASShortcut
+import ServiceManagement
 
 class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDelegate {
     
@@ -18,6 +19,7 @@ class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
     @IBOutlet weak var appDelegate: AppDelegate!
     @IBOutlet weak var iconTypeMatrix: NSMatrix!
     @IBOutlet weak var mouseClickButton: NSButton!
+    @IBOutlet weak var autoLaunchButton: NSButton!
 
     var dataArray:[NSMutableDictionary]! = []
     //var inputSourceModels = [InputSourceModel]()
@@ -28,7 +30,7 @@ class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
 
         // Register default values
         let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        defaults.registerDefaults([appDelegate.IconTypeAppDefaultKey as String: appDelegate.IconTypeApp, appDelegate.ClickTweakDefaultKey as String: false, appDelegate.OpenLoginDefaultKey as String: true])
+        defaults.registerDefaults([appDelegate.IconTypeAppDefaultKey as String: appDelegate.IconTypeApp, appDelegate.ClickTweakDefaultKey as String: false, appDelegate.OpenLoginDefaultKey as String: false])
 
         // Reload the table
         //self.tableView.reloadData()
@@ -81,15 +83,26 @@ class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
 
     func setUpCheckbox() {
         let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let flag = defaults.valueForKey(appDelegate.ClickTweakDefaultKey as String) as! Bool
-        if (!flag) {
+        // emulate mouse click
+        let mouseFlag = defaults.valueForKey(appDelegate.ClickTweakDefaultKey as String) as! Bool
+        if (!mouseFlag) {
             mouseClickButton.state = NSOffState
         }
         else {
             mouseClickButton.state = NSOnState
         }
+        LOG("loaded defaults key:\(appDelegate.ClickTweakDefaultKey) value:\(mouseFlag)")
 
-        LOG("loaded defaults key:\(appDelegate.ClickTweakDefaultKey) value:\(flag)")
+        // auto launch at login
+        let launchFlag = defaults.valueForKey(appDelegate.OpenLoginDefaultKey as String) as! Bool
+        if (!launchFlag) {
+            autoLaunchButton.state = NSOffState
+        }
+        else {
+            autoLaunchButton.state = NSOnState
+        }
+        
+        LOG("loaded defaults key:\(appDelegate.OpenLoginDefaultKey) value:\(launchFlag)")
     }
 
     
@@ -166,6 +179,32 @@ class TableViewController: NSViewController,NSTableViewDataSource,NSTableViewDel
         let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setValue(flag, forKey: appDelegate.ClickTweakDefaultKey as String)
         LOG("saved defaults key:\(appDelegate.ClickTweakDefaultKey) value:\(flag)")
+    }
+
+    @IBAction func autoLaunchAction(sender: AnyObject) {
+        let button:NSButton = sender as! NSButton
+        var autoLaunch:Bool = true
+        if (button.state == NSOffState) {
+            autoLaunch = false
+        }
+        
+        let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setValue(autoLaunch, forKey: appDelegate.OpenLoginDefaultKey as String)
+        LOG("saved defaults key:\(appDelegate.OpenLoginDefaultKey) value:\(autoLaunch)")
+        
+        // set auto launch status
+        let appBundleIdentifier = "net.nuridol.mac.SwitchIM.SwitchIMHelper"
+        if SMLoginItemSetEnabled(appBundleIdentifier, autoLaunch) {
+            if autoLaunch {
+                LOG("Successfully add login item.")
+            } else {
+                LOG("Successfully remove login item.")
+            }
+            
+        } else {
+            LOG("Failed to add login item.")
+        }
+        
     }
 }
 

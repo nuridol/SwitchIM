@@ -26,6 +26,7 @@
         <viewController id="vvc-Rn-IgQ" customClass="TableViewController" customModule="SwitchIM" customModuleProvider="target">
             <connections>
                 <outlet property="appDelegate" destination="Voe-Tx-rLC" id="R2O-EM-0Vp"/>
+                <outlet property="autoLaunchButton" destination="MS6-Hx-IbE" id="5V8-z0-Yxt"/>
                 <outlet property="iconTypeMatrix" destination="8vm-1Q-f6H" id="btK-Pc-JAn"/>
                 <outlet property="mouseClickButton" destination="ydT-Pr-lxG" id="OrB-x7-KHT"/>
                 <outlet property="myTableView" destination="unD-tT-02l" id="coI-Oe-x8j"/>
@@ -214,7 +215,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="Shortcut" id="qzY-tr-RgR">
-                                                    <rect key="frame" x="182" y="1" width="120" height="19"/>
+                                                    <rect key="frame" x="179" y="1" width="120" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIb-cz-QE3" customClass="MASShortcutView">
@@ -311,6 +312,16 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MS6-Hx-IbE">
+                        <rect key="frame" x="346" y="48" width="150" height="18"/>
+                        <buttonCell key="cell" type="check" title="Auto Launch at Login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="d8n-kb-cdx">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="autoLaunchAction:" target="vvc-Rn-IgQ" id="GWh-7O-9vf"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="376.5" y="396"/>

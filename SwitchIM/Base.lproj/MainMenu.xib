@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -25,6 +26,7 @@
         <viewController id="vvc-Rn-IgQ" customClass="TableViewController" customModule="SwitchIM" customModuleProvider="target">
             <connections>
                 <outlet property="appDelegate" destination="Voe-Tx-rLC" id="R2O-EM-0Vp"/>
+                <outlet property="autoLaunchButton" destination="MS6-Hx-IbE" id="5V8-z0-Yxt"/>
                 <outlet property="iconTypeMatrix" destination="8vm-1Q-f6H" id="btK-Pc-JAn"/>
                 <outlet property="mouseClickButton" destination="ydT-Pr-lxG" id="OrB-x7-KHT"/>
                 <outlet property="myTableView" destination="unD-tT-02l" id="coI-Oe-x8j"/>
@@ -53,6 +55,7 @@
                     </connections>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="376" y="181.5"/>
         </menu>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
@@ -143,21 +146,22 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="539" height="196"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="539" height="196"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="21" horizontalPageScroll="10" verticalLineScroll="21" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uoa-8k-mt2">
                         <rect key="frame" x="20" y="16" width="320" height="135"/>
-                        <clipView key="contentView" misplaced="YES" id="jwG-OX-UCO">
-                            <rect key="frame" x="1" y="0.0" width="238" height="134"/>
+                        <clipView key="contentView" ambiguous="YES" id="jwG-OX-UCO">
+                            <rect key="frame" x="1" y="0.0" width="318" height="134"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="19" headerView="cPb-us-E5q" viewBased="YES" id="unD-tT-02l">
+                                    <rect key="frame" x="0.0" y="0.0" width="318" height="111"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn identifier="InputSource" width="175" minWidth="40" maxWidth="1000" id="Dqd-b1-QUA">
@@ -197,7 +201,7 @@
                                                 </tableCellView>
                                             </prototypeCellViews>
                                         </tableColumn>
-                                        <tableColumn identifier="Shortcut" width="134" minWidth="40" maxWidth="1000" id="dvx-Yp-d9m">
+                                        <tableColumn identifier="Shortcut" width="137" minWidth="40" maxWidth="1000" id="dvx-Yp-d9m">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -211,7 +215,7 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView identifier="Shortcut" id="qzY-tr-RgR">
-                                                    <rect key="frame" x="182" y="1" width="120" height="19"/>
+                                                    <rect key="frame" x="179" y="1" width="120" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIb-cz-QE3" customClass="MASShortcutView">
@@ -234,15 +238,15 @@
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="U9W-dt-wIf">
-                            <rect key="frame" x="1" y="119" width="223" height="15"/>
+                            <rect key="frame" x="1" y="8" width="0.0" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="AsF-UU-dla">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="AsF-UU-dla">
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="cPb-us-E5q">
-                            <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="318" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
@@ -256,7 +260,7 @@
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ydT-Pr-lxG">
                         <rect key="frame" x="346" y="68" width="150" height="18"/>
-                        <buttonCell key="cell" type="check" title="Emulate mouse click" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cdq-0W-XF7">
+                        <buttonCell key="cell" type="check" title="Emulate mouse click" bezelStyle="regularSquare" imagePosition="left" inset="2" id="cdq-0W-XF7">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -266,14 +270,14 @@
                     </button>
                     <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="hEP-Uq-A0Y">
                         <rect key="frame" x="345" y="88" width="177" height="65"/>
-                        <view key="contentView">
+                        <view key="contentView" id="acX-pJ-pGc">
                             <rect key="frame" x="1" y="1" width="175" height="63"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8vm-1Q-f6H">
                                     <rect key="frame" x="18" y="13" width="139" height="38"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="cellSize" width="122" height="18"/>
+                                    <size key="cellSize" width="120" height="18"/>
                                     <size key="intercellSpacing" width="4" height="2"/>
                                     <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="ahe-rW-CuU">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -308,9 +312,19 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MS6-Hx-IbE">
+                        <rect key="frame" x="346" y="48" width="150" height="18"/>
+                        <buttonCell key="cell" type="check" title="Auto Launch at Login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="d8n-kb-cdx">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="autoLaunchAction:" target="vvc-Rn-IgQ" id="GWh-7O-9vf"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="388.5" y="400"/>
+            <point key="canvasLocation" x="376.5" y="396"/>
         </window>
     </objects>
     <resources>

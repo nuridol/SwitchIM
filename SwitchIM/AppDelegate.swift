@@ -90,10 +90,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let iconType: Int = defaults.objectForKey(IconTypeAppDefaultKey as String) as! Int
         
         LOG("Icon type: \(iconType)")
-
+        
         if (iconType == IconTypeApp) {
-            statusBarItem.title = ""
+            // TEST - Start
+            // let osxMode:String? = defaults.objectForKey("AppleInterfaceStyle") as! String?
+            // if (osxMode == "Dark") {
+            //     statusBarItem.image = NSImage(named: "StatusBarIconDark")
+            // }
+            // TEST -end
+
             statusBarItem.image = NSImage(named: "StatusBarIcon")
+            statusBarItem.title = ""
+            // for dark mode support
+            statusBarItem.image!.template = true
             LOG("status bar icon: app icon")
         }
         else if (iconType == IconTypeLang) {

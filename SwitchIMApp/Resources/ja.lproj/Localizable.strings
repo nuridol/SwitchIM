@@ -1,0 +1,27 @@
+"Input Sources" = "入力ソース";
+"No input sources found." = "入力ソースが見つかりません。";
+"Conflicts with “%@”" = "「%@」と競合しています";
+"Already used by a system shortcut" = "システムのショートカットで既に使用されています";
+"Settings…" = "設定…";
+"Quit SwitchIM" = "SwitchIM を終了";
+"This shortcut is already assigned to “%@”." = "このショートカットは既に「%@」に割り当てられています。";
+"SwitchIM Settings" = "SwitchIM 設定";
+"Menu Bar Icon" = "メニューバーアイコン";
+"App icon" = "アプリアイコン";
+"Input method icon" = "入力メソッドのアイコン";
+
+"About SwitchIM" = "SwitchIMについて";
+
+"Startup" = "起動";
+"Launch at Login" = "ログイン時に起動";
+"Enable in System Settings › General › Login Items" = "システム設定 › 一般 › ログイン項目で有効化";
+
+/* Input source toggle */
+"Input Source Toggle" = "入力ソースの切り替え";
+"Toggle Shortcut" = "切り替えショートカット";
+"ToggleShortcutHint" = "タップすると前の入力ソースに切り替わります。長押しでリストを表示し、ショートカットキーをもう一度押して移動(⇧ を合わせると逆方向)し、修飾キーを離すと確定します。⌃, ⌥, ⌘ のいずれかが必要です。";
+"Already assigned to “%@”" = "すでに「%@」に割り当てられています";
+"This shortcut is used by the input source toggle." = "このショートカットは入力ソース切り替えに使用されています。";
+"The toggle shortcut needs at least one of ⌃ ⌥ ⌘." = "切り替えショートカットには ⌃, ⌥, ⌘ のいずれかが必要です。";
+"The toggle shortcut cannot use ⇧ — it is reserved for reverse navigation." = "切り替えショートカットに ⇧ は使えません — 逆方向ナビゲーション用に予約されています。";
+"Open System Settings" = "システム設定を開く";

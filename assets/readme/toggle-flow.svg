@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="580" viewBox="0 0 1200 580" role="img" aria-labelledby="flowTitle flowDesc">
+  <title id="flowTitle">The global toggle — tap to swap, hold to pick</title>
+  <desc id="flowDesc">Left: tapping the chord swaps the current input source with the most recently used one. Right: holding the chord shows an overlay listing every input source; pressing the shortcut key again moves the highlight, adding Shift goes back, releasing the modifiers commits the selection.</desc>
+  <defs>
+    <linearGradient id="cap" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EFE9D9"/>
+    </linearGradient>
+    <linearGradient id="capAccent" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#79B7F2"/>
+      <stop offset="1" stop-color="#4A90DE"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="580" rx="28" fill="#F7F1E3"/>
+
+  <text x="72" y="66" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="3" fill="#2E77C8" opacity="0.9">GLOBAL TOGGLE</text>
+  <text x="72" y="104" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Apple SD Gothic Neo', sans-serif" font-size="26" font-weight="600" fill="#2B303A">One chord — tap to swap, hold to pick.</text>
+
+  <!-- TAP -->
+  <g>
+    <text x="96" y="152" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="2" fill="#8B8474">TAP</text>
+
+    <rect x="96" y="177" width="144" height="144" rx="26" fill="#E5DECB"/>
+    <rect x="96" y="170" width="144" height="144" rx="26" fill="url(#capAccent)" stroke="#B7D7FF" stroke-opacity="0.5" stroke-width="2"/>
+    <text x="168" y="272" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', sans-serif" font-size="62" font-weight="600" fill="#10141C">가</text>
+    <text x="168" y="306" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', sans-serif" font-size="18" fill="#2A3A55">한국어</text>
+
+    <path d="M 246 232 Q 322 200 392 232" fill="none" stroke="#2E77C8" stroke-width="3" opacity="0.9"/>
+    <polygon points="404,232 386,224 386,240" fill="#2E77C8"/>
+    <path d="M 398 272 Q 322 304 252 272" fill="none" stroke="#2E77C8" stroke-width="3" opacity="0.9"/>
+    <polygon points="240,272 258,264 258,280" fill="#2E77C8"/>
+    <text x="322" y="352" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#2E77C8">MRU swap</text>
+
+    <rect x="404" y="177" width="144" height="144" rx="26" fill="#E5DECB"/>
+    <rect x="404" y="170" width="144" height="144" rx="26" fill="url(#cap)" stroke="#D8D0BD" stroke-width="2"/>
+    <text x="476" y="268" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="56" font-weight="600" fill="#2B303A">A</text>
+    <text x="476" y="306" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B8474">ABC</text>
+
+    <text x="322" y="402" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Apple SD Gothic Neo', sans-serif" font-size="20" fill="#555D6B">Jumps to the most recently used source —</text>
+    <text x="322" y="430" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Apple SD Gothic Neo', sans-serif" font-size="20" fill="#555D6B">and back again on the next tap.</text>
+  </g>
+
+  <!-- HOLD -->
+  <g>
+    <text x="664" y="152" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="2" fill="#8B8474">HOLD</text>
+
+    <rect x="664" y="160" width="472" height="302" rx="20" fill="#F2ECDC" stroke="#D8D0BD" stroke-width="2"/>
+
+    <rect x="678" y="174" width="444" height="60" rx="14" fill="#DDEBFA" stroke="#2E77C8" stroke-width="1.5"/>
+    <rect x="692" y="186" width="36" height="36" rx="9" fill="url(#capAccent)"/>
+    <text x="710" y="212" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', sans-serif" font-size="20" font-weight="600" fill="#10141C">가</text>
+    <text x="748" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Apple SD Gothic Neo', sans-serif" font-size="21" fill="#23272E">한국어 — 2-Set</text>
+
+    <rect x="678" y="244" width="444" height="60" rx="14" fill="#FBF7ED"/>
+    <rect x="692" y="256" width="36" height="36" rx="9" fill="url(#cap)" stroke="#D8D0BD" stroke-width="1.5"/>
+    <text x="710" y="282" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif" font-size="20" fill="#4C5462">あ</text>
+    <text x="748" y="282" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif" font-size="21" fill="#555D6B">日本語 — Hiragana</text>
+
+    <rect x="678" y="314" width="444" height="60" rx="14" fill="#FBF7ED"/>
+    <rect x="692" y="326" width="36" height="36" rx="9" fill="url(#cap)" stroke="#D8D0BD" stroke-width="1.5"/>
+    <text x="710" y="352" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" fill="#4C5462">中</text>
+    <text x="748" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="21" fill="#555D6B">中文 — Pinyin</text>
+
+    <rect x="678" y="384" width="444" height="60" rx="14" fill="#FBF7ED"/>
+    <rect x="692" y="396" width="36" height="36" rx="9" fill="url(#cap)" stroke="#D8D0BD" stroke-width="1.5"/>
+    <text x="710" y="422" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" fill="#4C5462">A</text>
+    <text x="748" y="422" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="21" fill="#555D6B">ABC</text>
+
+    <text x="900" y="496" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" fill="#555D6B">press again to move · add ⇧ to go back</text>
+    <text x="900" y="524" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" fill="#555D6B">release commits the highlighted source</text>
+  </g>
+</svg>

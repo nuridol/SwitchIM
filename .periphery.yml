@@ -1,0 +1,7 @@
+# Periphery configuration — manual full scans (`periphery scan` from the
+# repo root). The Xcode build phase reuses these project/schemes settings but
+# overrides the build behavior (see project.yml "Scan Unused Code" phase).
+project: SwitchIM.xcodeproj
+schemes:
+  - SwitchIM
+  - SwitchIMCoreTests

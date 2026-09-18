@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">SwitchIM</title>
+  <desc id="heroDesc">SwitchIM gives every input method on macOS its own shortcut and a toggle between them. A settings card lists three input methods — Korean, Japanese and ABC — each with its own recorded shortcut chip, and below the card a shared chord chip labeled tap to swap, hold to pick.</desc>
+  <defs>
+    <linearGradient id="cap" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EFE9D9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="380" rx="28" fill="#F7F1E3"/>
+
+  <!-- Title block -->
+  <g>
+    <text x="72" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" letter-spacing="3" fill="#2E77C8" opacity="0.9">MACOS · INPUT SOURCE SWITCHER</text>
+    <text x="70" y="166" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Apple SD Gothic Neo', sans-serif" font-size="76" font-weight="700" fill="#23272E">Switch<tspan fill="#2E77C8">IM</tspan></text>
+    <text x="72" y="216" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Apple SD Gothic Neo', sans-serif" font-size="24" fill="#4C5462">A shortcut of its own for every input method,</text>
+    <text x="72" y="250" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Apple SD Gothic Neo', sans-serif" font-size="24" fill="#4C5462">plus a toggle between them.</text>
+    <text x="72" y="320" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#8B8474">macOS 13+  ·  Swift 6  ·  XcodeGen  ·  MIT</text>
+  </g>
+
+  <!-- Settings card: one shortcut per input method -->
+  <g>
+    <rect x="640" y="52" width="460" height="256" rx="18" fill="#FFFDF6" stroke="#D8D0BD" stroke-width="2"/>
+
+    <circle cx="668" cy="82" r="5" fill="#E2846E" opacity="0.85"/>
+    <circle cx="686" cy="82" r="5" fill="#E5B567" opacity="0.85"/>
+    <circle cx="704" cy="82" r="5" fill="#8BC98A" opacity="0.85"/>
+    <text x="724" y="88" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#8B8474">Settings · Input Sources</text>
+    <line x1="640" y1="104" x2="1100" y2="104" stroke="#E6DFCE" stroke-width="2"/>
+
+    <!-- Row: Korean -->
+    <text x="676" y="149" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', sans-serif" font-size="21" fill="#23272E">한국어</text>
+    <text x="676" y="171" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8B8474">2-Set Korean</text>
+    <rect x="944" y="118" width="128" height="44" rx="10" fill="url(#cap)" stroke="#D8D0BD" stroke-width="2"/>
+    <text x="1008" y="147" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#4C5462">⌃⌥K</text>
+
+    <!-- Row: Japanese -->
+    <text x="676" y="215" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', sans-serif" font-size="21" fill="#23272E">日本語</text>
+    <text x="676" y="237" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8B8474">Hiragino</text>
+    <rect x="944" y="184" width="128" height="44" rx="10" fill="url(#cap)" stroke="#D8D0BD" stroke-width="2"/>
+    <text x="1008" y="213" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#4C5462">⌃⌥J</text>
+
+    <!-- Row: ABC -->
+    <text x="676" y="281" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="21" fill="#23272E">ABC</text>
+    <text x="676" y="303" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#8B8474">English</text>
+    <rect x="944" y="250" width="128" height="44" rx="10" fill="url(#cap)" stroke="#D8D0BD" stroke-width="2"/>
+    <text x="1008" y="279" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#4C5462">⌃⌥A</text>
+  </g>
+
+  <!-- The shared toggle chord, below the card -->
+  <g>
+    <rect x="640" y="326" width="132" height="40" rx="10" fill="#FFFFFF" stroke="#D8D0BD" stroke-width="2"/>
+    <text x="706" y="352" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#4C5462">⌃⌥ space</text>
+    <text x="792" y="352" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#8B8474">tap to swap · hold to pick</text>
+  </g>
+</svg>

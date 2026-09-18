@@ -1,0 +1,27 @@
+"Input Sources" = "输入法";
+"No input sources found." = "未找到输入法。";
+"Conflicts with “%@”" = "与“%@”冲突";
+"Already used by a system shortcut" = "已被系统快捷键占用";
+"Settings…" = "设置…";
+"Quit SwitchIM" = "退出 SwitchIM";
+"This shortcut is already assigned to “%@”." = "此快捷键已分配给“%@”。";
+"SwitchIM Settings" = "SwitchIM 设置";
+"Menu Bar Icon" = "菜单栏图标";
+"App icon" = "应用图标";
+"Input method icon" = "输入法图标";
+
+"About SwitchIM" = "关于 SwitchIM";
+
+"Startup" = "启动";
+"Launch at Login" = "登录时启动";
+"Enable in System Settings › General › Login Items" = "在系统设置 › 通用 › 登录项中启用";
+
+/* Input source toggle */
+"Input Source Toggle" = "输入源切换";
+"Toggle Shortcut" = "切换快捷键";
+"ToggleShortcutHint" = "轻点即可切换到上一个输入源；长按显示列表，再按一次快捷键移动（加按 ⇧ 反方向），松开修饰键确认。需要 ⌃、⌥ 或 ⌘。";
+"Already assigned to “%@”" = "已分配给“%@”";
+"This shortcut is used by the input source toggle." = "此快捷键已被输入源切换使用。";
+"The toggle shortcut needs at least one of ⌃ ⌥ ⌘." = "切换快捷键需要 ⌃、⌥、⌘ 中至少一个。";
+"The toggle shortcut cannot use ⇧ — it is reserved for reverse navigation." = "切换快捷键不能使用 ⇧ — 它保留用于反向导航。";
+"Open System Settings" = "打开系统设置";

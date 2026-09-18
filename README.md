@@ -1,23 +1,88 @@
-# What is SwitchIM?
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%"
+        alt="SwitchIM, a macOS input source switcher">
+</p>
 
-Switch text input source with custom shortcuts on macOS.
-Supports macOS Yosemite(10.10) and later.
+# SwitchIM
 
-SwitchIM은 각 입력기마다 단축키를 지정해서 입력기 전환을 간편하게 만드는 프로그램입니다.  
-macOS Yosemite(10.10) 이후를 지원합니다.
+[English](README.md) · [한국어](README.ko.md) · [日本語](README.ja.md) · [简体中文](README.zh-Hans.md)
 
-在macOS上用快捷键切换输入法。
-支持 macOS Yosemite(10.10) 及更高版本的系统。
+**SwitchIM** assigns a dedicated global shortcut to every input source on macOS.
+Set up the input source toggle and you can switch input sources from a list, much
+like the system input source picker.
 
-キーボードショートカットで入力ソールを切り替えます。
-macOS Yosemite(10.10) 以上が支援されてます。
+## Per-input-source shortcuts
 
-Download link / 프로그램 다운로드 / 下载链接 / ダウンロードリンク: [0.9.1](https://github.com/nuridol/SwitchIM/releases/download/v0.9.1/SwitchIM_v0.9.1.app.zip)
+Register a shortcut for an input source in the Settings window and you can
+switch to that input source from anywhere with that key.
 
-# How to build
-- Install CocoaPods if you don't have.  
-- Run `pod install` in project folder to install [MASShortcut](https://github.com/shpakovski/MASShortcut) framework.  
-- Open `SwitchIM.xcworkspace`
+- Support for 3rd-party IMEs (Keyman, Gureum, azooKey, ...)
+- Reliable switching for CJK (Korean/Japanese/Chinese) input methods
+- Every input source also one click away in the menu bar
 
-# License
+## The input source toggle
+
+<p align="center">
+  <img src="./assets/readme/toggle-flow.svg" width="100%"
+       alt="The input source toggle: pressing the toggle shortcut swaps between the current and most recently used input source. Holding the modifier keys shows the input source list, where pressing the shortcut key again moves the selection and releasing the modifiers switches to the selected input source.">
+</p>
+
+- Press the toggle shortcut to switch quickly between the current and previous
+  input source
+- **Hold** the modifier keys: every input source appears in a centered list;
+  pressing the shortcut key again moves the highlight to the next item, adding
+  Shift goes back, and releasing the modifiers confirms the selection
+
+## Also
+
+- One-time migration of SwitchIM 1.x shortcuts
+- Optional launch at login
+
+## How switching works
+
+<p align="center">
+  <img src="./assets/readme/architecture.svg" width="100%"
+       alt="Two reliable switching paths, per-input-source shortcuts and the toggle shortcut, both registered through KeyboardShortcuts and ending in TIS selection with read-back verification, independent of the system input source hotkeys.">
+</p>
+
+- Per-input-source shortcut and toggle registration uses
+  [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts)
+- Input source switching uses TIS
+
+## Build
+
+Requires macOS 13+, Xcode 15+ and [XcodeGen](https://github.com/yonaskolb/XcodeGen)
+(project file generation), plus [SwiftLint](https://github.com/realm/SwiftLint)
+(`brew install swiftlint`).
+
+The build runs a lint + format pre-build phase and fails on SwiftLint errors.
+[swift-format](https://github.com/swiftlang/swift-format) ships with Xcode.
+
+```
+xcodegen generate
+open SwitchIM.xcodeproj
+```
+
+Run `xcodebuild` with the `SwitchIM` scheme, or open the project and build in
+Xcode.
+
+## Development
+
+### Core package tests
+
+The engine (`SwitchIMCore`) is a Swift package with its own unit tests:
+
+```
+cd SwitchIMCore && swift test
+```
+
+Hardware-gated tests (real TIS / system input sources) run when the marker
+file exists:
+
+```
+touch /tmp/switchim_hw_tests && cd SwitchIMCore && swift test && rm /tmp/switchim_hw_tests
+```
+
+## License
+
 SwitchIM is released under the MIT license.

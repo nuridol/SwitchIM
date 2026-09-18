@@ -1,0 +1,27 @@
+"Input Sources" = "입력 소스";
+"No input sources found." = "입력 소스를 찾을 수 없습니다.";
+"Conflicts with “%@”" = "“%@” 키와 충돌합니다";
+"Already used by a system shortcut" = "시스템 단축키로 이미 사용 중입니다";
+"Settings…" = "설정…";
+"Quit SwitchIM" = "SwitchIM 종료";
+"This shortcut is already assigned to “%@”." = "이 단축키는 이미 “%@”에 지정되어 있습니다.";
+"SwitchIM Settings" = "SwitchIM 설정";
+"Menu Bar Icon" = "메뉴바 아이콘";
+"App icon" = "앱 아이콘";
+"Input method icon" = "입력기 아이콘";
+
+"About SwitchIM" = "SwitchIM 정보";
+
+"Startup" = "시작";
+"Launch at Login" = "로그인 시 실행";
+"Enable in System Settings › General › Login Items" = "시스템 설정 › 일반 › 로그인 항목에서 활성화";
+
+/* Input source toggle */
+"Input Source Toggle" = "입력 소스 토글";
+"Toggle Shortcut" = "토글 단축키";
+"ToggleShortcutHint" = "탭하면 이전 입력 소스로 전환됩니다. 길게 누르면 목록이 표시되고, 단축키를 다시 눌러 이동(⇧를 함께 누르면 반대 방향)한 뒤 수정자를 떼면 확정됩니다. ⌃, ⌥, ⌘ 중 하나 이상 필요.";
+"Already assigned to “%@”" = "이미 “%@”에 지정되어 있습니다";
+"This shortcut is used by the input source toggle." = "이 단축키는 입력 소스 토글에 사용 중입니다.";
+"The toggle shortcut needs at least one of ⌃ ⌥ ⌘." = "토글 단축키에는 ⌃, ⌥, ⌘ 중 하나 이상이 필요합니다.";
+"The toggle shortcut cannot use ⇧ — it is reserved for reverse navigation." = "토글 단축키에는 ⇧를 쓸 수 없습니다 — 역방향 이동에 사용됩니다.";
+"Open System Settings" = "시스템 설정 열기";

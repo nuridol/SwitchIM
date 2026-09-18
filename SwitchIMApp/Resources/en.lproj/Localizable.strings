@@ -1,0 +1,27 @@
+"Input Sources" = "Input Sources";
+"No input sources found." = "No input sources found.";
+"Conflicts with “%@”" = "Conflicts with “%@”";
+"Already used by a system shortcut" = "Already used by a system shortcut";
+"Settings…" = "Settings…";
+"Quit SwitchIM" = "Quit SwitchIM";
+"This shortcut is already assigned to “%@”." = "This shortcut is already assigned to “%@”.";
+"SwitchIM Settings" = "SwitchIM Settings";
+"Menu Bar Icon" = "Menu Bar Icon";
+"App icon" = "App icon";
+"Input method icon" = "Input method icon";
+
+"About SwitchIM" = "About SwitchIM";
+
+"Startup" = "Startup";
+"Launch at Login" = "Launch at Login";
+"Enable in System Settings › General › Login Items" = "Enable in System Settings › General › Login Items";
+
+/* Input source toggle */
+"Input Source Toggle" = "Input Source Toggle";
+"Toggle Shortcut" = "Toggle Shortcut";
+"ToggleShortcutHint" = "Tap to switch to the previous input source; hold to show the list, then press the shortcut key again to move (add Shift for the other direction) and release the modifiers to commit. Requires ⌃, ⌥, or ⌘.";
+"Already assigned to “%@”" = "Already assigned to “%@”";
+"This shortcut is used by the input source toggle." = "This shortcut is used by the input source toggle.";
+"The toggle shortcut needs at least one of ⌃ ⌥ ⌘." = "The toggle shortcut needs at least one of ⌃ ⌥ ⌘.";
+"The toggle shortcut cannot use ⇧ — it is reserved for reverse navigation." = "The toggle shortcut cannot use ⇧ — it is reserved for reverse navigation.";
+"Open System Settings" = "Open System Settings";

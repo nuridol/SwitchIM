@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none">
+  <defs>
+    <linearGradient id="base" x1="126" y1="84" x2="892" y2="946" gradientUnits="userSpaceOnUse"><stop stop-color="#B7F5F2"/><stop offset=".42" stop-color="#88BFFC"/><stop offset="1" stop-color="#7269DA"/></linearGradient>
+    <radialGradient id="warm" cx="0" cy="0" r="1" gradientTransform="rotate(135 347 259) scale(555)"><stop stop-color="#FFD890" stop-opacity=".96"/><stop offset=".38" stop-color="#F99EBC" stop-opacity=".53"/><stop offset="1" stop-color="#9F7FE9" stop-opacity="0"/></radialGradient>
+    <linearGradient id="glass" x1="248" y1="289" x2="762" y2="762" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity=".6"/><stop offset=".45" stop-color="#E8EDFF" stop-opacity=".30"/><stop offset="1" stop-color="#786BC9" stop-opacity=".3"/></linearGradient>
+    <linearGradient id="key" x1="0" y1="0" x2="0" y2="1"><stop stop-color="white" stop-opacity=".88"/><stop offset="1" stop-color="#D9E8FF" stop-opacity=".38"/></linearGradient>
+    <linearGradient id="im" x1="442" y1="451" x2="614" y2="655" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF1B1"/><stop offset=".42" stop-color="#FFB8A5"/><stop offset="1" stop-color="#B586ED"/></linearGradient>
+    <filter id="shadow" x="150" y="186" width="724" height="686" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="28" stdDeviation="28" flood-color="#293276" flood-opacity=".25"/></filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="keyShadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dy="10" stdDeviation="10" flood-color="#334177" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="1024" height="1024" rx="228" fill="url(#base)"/><rect width="1024" height="1024" rx="228" fill="url(#warm)"/>
+  <ellipse cx="244" cy="196" rx="258" ry="189" fill="#E9FFFF" fill-opacity=".55" filter="url(#soft)"/><ellipse cx="780" cy="835" rx="270" ry="190" fill="#6049B8" fill-opacity=".28" filter="url(#soft)"/>
+  <g filter="url(#shadow)">
+    <rect x="172" y="254" width="680" height="530" rx="114" fill="url(#glass)" stroke="white" stroke-opacity=".48" stroke-width="5"/>
+    <g fill="url(#key)" stroke="white" stroke-opacity=".7" stroke-width="3" filter="url(#keyShadow)"><rect x="246" y="383" width="92" height="70" rx="25"/><rect x="358" y="383" width="92" height="70" rx="25"/><rect x="470" y="383" width="92" height="70" rx="25"/><rect x="582" y="383" width="92" height="70" rx="25"/><rect x="694" y="383" width="84" height="70" rx="25"/><rect x="216" y="603" width="135" height="70" rx="25"/><rect x="673" y="603" width="135" height="70" rx="25"/><rect x="286" y="694" width="452" height="56" rx="24"/></g>
+    <g filter="url(#keyShadow)"><rect x="367" y="484" width="136" height="148" rx="45" fill="url(#im)" stroke="white" stroke-opacity=".67" stroke-width="4"/><rect x="521" y="484" width="136" height="148" rx="45" fill="url(#im)" stroke="white" stroke-opacity=".67" stroke-width="4"/></g>
+    <path d="M435 535V583" stroke="#574A91" stroke-width="15" stroke-linecap="round"/><path d="M553 582V535L589 574L625 535V582" stroke="#574A91" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

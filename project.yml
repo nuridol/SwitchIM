@@ -1,0 +1,129 @@
+name: SwitchIM
+options:
+  bundleIdPrefix: net.nuridol.mac
+  deploymentTarget:
+    macOS: "13.0"
+  createIntermediateGroups: true
+  developmentLanguage: en
+  localizations:
+    - en
+    - ko
+    - ja
+    - zh-Hans
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    ENABLE_HARDENED_RUNTIME: YES
+    CODE_SIGN_STYLE: Automatic
+packages:
+  KeyboardShortcuts:
+    url: https://github.com/sindresorhus/KeyboardShortcuts
+    from: 3.1.0
+  SwitchIMCore:
+    path: SwitchIMCore
+targets:
+  SwitchIM:
+    type: application
+    platform: macOS
+    sources:
+      - path: SwitchIMApp
+        excludes:
+          - Resources/Info.plist
+          - Resources/SwitchIM.entitlements
+    preBuildScripts:
+      - name: Format Swift Sources (swift-format)
+        basedOnDependencyAnalysis: false
+        script: |
+          cd "$SRCROOT"
+          if xcrun --find swift-format >/dev/null 2>&1; then
+            xcrun swift-format format --in-place --recursive SwitchIMApp SwitchIMCore/Sources SwitchIMCore/Tests
+          fi
+      - name: Lint Swift Sources (SwiftLint)
+        basedOnDependencyAnalysis: false
+        script: |
+          cd "$SRCROOT"
+          if command -v swiftlint >/dev/null 2>&1; then
+            swiftlint --config "$SRCROOT/.swiftlint.yml"
+          fi
+      - name: Scan Unused Code (Periphery)
+        basedOnDependencyAnalysis: false
+        script: |
+          cd "$SRCROOT"
+          if command -v periphery >/dev/null 2>&1; then
+            # Reuses the previous build's index (no nested build, ~2s vs ~30s);
+            # skipped when no index exists yet (first build after a clean).
+            # Redundant-public analysis stays off: the app scheme's index has
+            # no test targets, so test-consumed core APIs would be false-flagged.
+            INDEX_STORE="${BUILT_PRODUCTS_DIR}/../../../Index.noindex/DataStore"
+            if [ -d "$INDEX_STORE" ]; then
+              periphery scan \
+                --skip-build \
+                --index-store-path "$INDEX_STORE" \
+                --disable-redundant-public-analysis \
+                --disable-update-check
+            fi
+          fi
+    postBuildScripts:
+      - name: Stamp Build Number
+        basedOnDependencyAnalysis: false
+        inputFiles:
+          - $(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
+        script: |
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $(date +%s)" \
+            "$BUILT_PRODUCTS_DIR/$INFOPLIST_PATH"
+    dependencies:
+      - package: KeyboardShortcuts
+        product: KeyboardShortcuts
+      - package: SwitchIMCore
+        product: SwitchIMCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: net.nuridol.mac.SwitchIM
+        PRODUCT_NAME: SwitchIM
+        MARKETING_VERSION: "2.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        INFOPLIST_FILE: SwitchIMApp/Resources/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: SwitchIMApp/Resources/SwitchIM.entitlements
+  SwitchIMCoreTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: SwitchIMCore/Tests/SwitchIMCoreTests
+    preBuildScripts:
+      - name: Format Swift Sources (swift-format)
+        basedOnDependencyAnalysis: false
+        script: |
+          cd "$SRCROOT"
+          if xcrun --find swift-format >/dev/null 2>&1; then
+            xcrun swift-format format --in-place --recursive SwitchIMApp SwitchIMCore/Sources SwitchIMCore/Tests
+          fi
+      - name: Lint Swift Sources (SwiftLint)
+        basedOnDependencyAnalysis: false
+        script: |
+          cd "$SRCROOT"
+          if command -v swiftlint >/dev/null 2>&1; then
+            swiftlint --config "$SRCROOT/.swiftlint.yml"
+          fi
+    dependencies:
+      - package: SwitchIMCore
+        product: SwitchIMCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: net.nuridol.mac.SwitchIMCoreTests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  SwitchIM:
+    build:
+      targets:
+        SwitchIM: all
+    run:
+      config: Debug
+  SwitchIMCoreTests:
+    build:
+      targets:
+        SwitchIMCoreTests: test
+    test:
+      targets:
+        - SwitchIMCoreTests
